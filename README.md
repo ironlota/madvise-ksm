@@ -4,6 +4,8 @@
 
 See [DEVNOTES.md](DEVNOTES.md) for more info about this implementation
 
+Inspired by this [posts](http://www.metaklass.org/linux-ksm-madvise/) by Jorge Niedbalski
+
 ## Compile
 
 ```sh
