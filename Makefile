@@ -34,10 +34,29 @@ clean:
 	-rm $(WITHOUT_MADVISE_EXECUTABLE)
 
 run-with-madvise:
-	./bin/with_madvise & ./bin/with_madvise & ./bin/with_madvise & ./bin/with_madvise & ./bin/with_madvise & ./bin/with_madvise
+	for i in `seq 1 ${num_process}` ; do \
+		./bin/with_madvise ${array_size} & \
+	done
 
 run-without-madvise:
-	./bin/without_madvise & ./bin/without_madvise & ./bin/without_madvise & ./bin/without_madvise & ./bin/without_madvise & ./bin/without_madvise
+	for i in `seq 1 ${num_process}` ; do \
+		./bin/without_madvise ${array_size} & \
+	done
 
-run:
-	make run-with-madvise & make run-without-madvise
+priv-profiling-with-madvise:
+	ps_mem -p `pgrep -d, -f ./bin/with_madvise`
+
+priv-profiling-without-madvise:
+	ps_mem -p `pgrep -d, -f ./bin/without_madvise`
+
+profiling-with-madvise:
+	make priv-profiling-with-madvise > ./logs/with_madvise/size_${array_size}/${num_process}.log && make kill-with-madvise
+
+profiling-without-madvise:
+	make priv-profiling-without-madvise > ./logs/without_madvise/size_${array_size}/${num_process}.log && make kill-without-madvise
+
+kill-with-madvise:
+	killall with_madvise
+
+kill-without-madvise:
+	killall without_madvise
