@@ -68,7 +68,7 @@ And this process can be done by using **MMAP**.
 >
 > For more info read https://www.kernel.org/doc/html/latest/admin-guide/mm/ksm.html
 
-## Future Reading
+## Further Reading
 
 - [Kernel SamePage Merging](https://www.kernel.org/doc/html/latest/admin-guide/mm/ksm.html)
 - [Madvise](http://man7.org/linux/man-pages/man2/madvise.2.html)
