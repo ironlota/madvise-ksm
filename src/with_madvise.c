@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define N_PAGES 3
+#define N_PAGES 1
 
 void p_s(void)
 {
@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
 
   if (argc > 1)
   {
-    // p_size = (size_t)argv[1];
     sscanf(argv[1], "%lu", &p_size);
   }
 
